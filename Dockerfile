@@ -63,9 +63,6 @@ RUN cd /tmp && git init tmpgit \
   && chmod 775 /etc/kamailio/kamailio.cfg \
   && ln -s /usr/lib64 /usr/lib/x86_64-linux-gnu/
 
-# PATCH CONFIG
-RUN sed -i -e "s/127.0.0.1:8086/influxdb:8086/g" /etc/kamailio/kamailio.cfg
-
 # GeoIP (http://dev.maxmind.com/geoip/legacy/geolite/)
 RUN apt-get update -qq && apt-get install -f -yqq geoip-database geoip-database-extra
 

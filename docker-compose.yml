@@ -3,12 +3,14 @@ version: '2'
 services:
   # Define a HOMER service
   homer:
-    image: qxip/homer-metric-all
+    image: qxip/homer-metric-all:latest
     environment:
+      INFLUXDB_URL: influxdb:8086
       DO_INFLUXDB: 1
       DO_KPI: 1
       DO_GEO: 1
       DO_KAMSTAT: 1
+      DO_METHOD: 1
     volumes:
       - ./data/homer/mysql:/var/lib/mysql
     ports:
@@ -84,3 +86,17 @@ services:
       KAPACITOR_URL: http://kapacitor:9092
     links:
       - kapacitor
+
+# Define a SIREN service
+#  elastic:
+#    depends_on:
+#      - "homer"
+#    image: qxip/docker-kibi-steroids:latest
+#    environment:
+#      ES_USER: admin
+#      ES_PASSWORD: admin
+#    ports:
+#      - "9200:9200"
+#      - "5606:5606"
+
+

@@ -182,19 +182,29 @@ perl -p -i -e "s/\{\{ DB_USER \}\}/$DB_USER/" $PATH_KAMAILIO_CFG
 # sed -i -e 's/$var(a) = $var(table) + "_%Y%m%d";/# runscript removed -- $var(a) = $var(table) + "_%Y%m%d";/' $PATH_KAMAILIO_CFG
 
 ##################
-## BACKEND OPTIONS
+## INFLUXDB OPTIONS
 if [ -n "$DO_INFLUXDB" ]; then
 	sed -i '/^#.*define.*DO_INFLUXDB/s/^#//' /etc/kamailio/kamailio.cfg
 fi
-if [ -n "$DO_GRAYLOG" ]; then
-	sed -i '/^#.*define.*DO_GRAYLOG/s/^#//' /etc/kamailio/kamailio.cfg
+if [ -n "$INFLUXDB_URL" ]; then
+	sed -i -e "s/127.0.0.1:8086/$DO_INFLUX_URL/g" /etc/kamailio/kamailio.cfg
 fi
+##################
+## ELASTICSEARCH OPTIONS
 if [ -n "$DO_ELASTICSEARCH" ]; then
 	sed -i '/^#.*define.*DO_ELASTICSEARCH/s/^#//' /etc/kamailio/kamailio.cfg
 fi
+if [ -n "$ELASTICSEARCH_URL" ]; then
+	sed -i -e "s/127.0.0.1:9200/$DO_ELASTICSEARCH_URL/g" /etc/kamailio/kamailio.cfg
+fi
+##################
+## GRAYLOG OPTIONS
+if [ -n "$DO_GRAYLOG" ]; then
+	sed -i '/^#.*define.*DO_GRAYLOG/s/^#//' /etc/kamailio/kamailio.cfg
+fi
 
 ##################
-## SERIES OPTIONS
+## METRICS OPTIONS
 if [ -n "$DO_KPI" ]; then
 	sed -i '/^#.*define.*DO_KPI/s/^#//' /etc/kamailio/kamailio.cfg
 fi
@@ -207,6 +217,28 @@ fi
 if [ -n "$DO_METHOD" ]; then
 	sed -i '/^#.*define.*DO_METHOD/s/^#//' /etc/kamailio/kamailio.cfg
 fi
+if [ -n "$DO_ISUP" ]; then
+	sed -i '/^#.*define.*DO_ISUP/s/^#//' /etc/kamailio/kamailio.cfg
+fi
+if [ -n "$DO_MALICIOUS" ]; then
+	sed -i '/^#.*define.*DO_MALICIOUS/s/^#//' /etc/kamailio/kamailio.cfg
+fi
+if [ -n "$DO_RESPONSE" ]; then
+	sed -i '/^#.*define.*DO_RESPONSE/s/^#//' /etc/kamailio/kamailio.cfg
+fi
+if [ -n "$DO_RTCPXR" ]; then
+	sed -i '/^#.*define.*DO_RTCPXR/s/^#//' /etc/kamailio/kamailio.cfg
+fi
+if [ -n "$DO_USERAGENT" ]; then
+	sed -i '/^#.*define.*DO_USERAGENT/s/^#//' /etc/kamailio/kamailio.cfg
+fi
+if [ -n "$DO_XRTP" ]; then
+	sed -i '/^#.*define.*DO_XRTP/s/^#//' /etc/kamailio/kamailio.cfg
+fi
+if [ -n "$DO_XHTTP" ]; then
+	sed -i '/^#.*define.*DO_XHTTP/s/^#//' /etc/kamailio/kamailio.cfg
+fi
+
 
 # Make an alias, kinda.
 kamailio=$(which kamailio)
