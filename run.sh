@@ -181,6 +181,33 @@ perl -p -i -e "s/\{\{ DB_USER \}\}/$DB_USER/" $PATH_KAMAILIO_CFG
 # sed -i -e 's/# $var(a) = $var(table) + "_" + $timef(%Y%m%d);/$var(a) = $var(table) + "_" + $timef(%Y%m%d);/' $PATH_KAMAILIO_CFG
 # sed -i -e 's/$var(a) = $var(table) + "_%Y%m%d";/# runscript removed -- $var(a) = $var(table) + "_%Y%m%d";/' $PATH_KAMAILIO_CFG
 
+##################
+## BACKEND OPTIONS
+if [ -n "$DO_INFLUXDB" ]; then
+	sed -i '/^#.*define.*DO_INFLUXDB/s/^#//' /etc/kamailio/kamailio.cfg
+fi
+if [ -n "$DO_GRAYLOG" ]; then
+	sed -i '/^#.*define.*DO_GRAYLOG/s/^#//' /etc/kamailio/kamailio.cfg
+fi
+if [ -n "$DO_ELASTICSEARCH" ]; then
+	sed -i '/^#.*define.*DO_ELASTICSEARCH/s/^#//' /etc/kamailio/kamailio.cfg
+fi
+
+##################
+## SERIES OPTIONS
+if [ -n "$DO_KPI" ]; then
+	sed -i '/^#.*define.*DO_KPI/s/^#//' /etc/kamailio/kamailio.cfg
+fi
+if [ -n "$DO_KAMSTAT" ]; then
+	sed -i '/^#.*define.*DO_KAMSTAT/s/^#//' /etc/kamailio/kamailio.cfg
+fi
+if [ -n "$DO_GEO" ]; then
+	sed -i '/^#.*define.*DO_GEO/s/^#//' /etc/kamailio/kamailio.cfg
+fi
+if [ -n "$DO_METHOD" ]; then
+	sed -i '/^#.*define.*DO_METHOD/s/^#//' /etc/kamailio/kamailio.cfg
+fi
+
 # Make an alias, kinda.
 kamailio=$(which kamailio)
 
@@ -197,4 +224,3 @@ apachectl start
 
 # It's Homer time!
 $kamailio -f $PATH_KAMAILIO_CFG -DD -E -e
-
