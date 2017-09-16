@@ -1,2 +1,7 @@
 # homer-metric-all
-HOMER Metric Bundle for Docker
+
+Docker container running [HOMER Metric](https://github.com/sipcapture/homer-config/tree/master/metric) branch
+
+```
+docker-compose up -d
+```
