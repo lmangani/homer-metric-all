@@ -151,6 +151,9 @@ if [ "$DB_HOST" == "$DOCK_IP" ]; then
       MYSQL_RUN
     fi
 
+    # K 5 rotation style
+    cp /opt/rotation_kamailio5.ini /opt/rotation.ini
+
     # Reconfigure rotation
     export PATH_ROTATION_SCRIPT=/opt/homer_mysql_rotate
     chmod 775 $PATH_ROTATION_SCRIPT
