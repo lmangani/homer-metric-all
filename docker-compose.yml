@@ -87,7 +87,20 @@ services:
     links:
       - kapacitor
 
-# Define a SIREN service
+# Define Asterisk service
+#  asterisk:
+#    image: dougbtv/asterisk14
+#    environment:
+#      KAPACITOR_URL: http://kapacitor:9092
+#    ports:
+#      - "5060:5060/udp"
+#      - "10001-10002:10001-10002/udp"
+#    volumes:
+#      - ./data/asterisk/asterisk.sip.conf:/etc/asterisk/sip.conf
+#      - ./data/asterisk/asterisk1.rtp.conf:/etc/asterisk/rtp.conf
+#      - ./data/asterisk/extensions.conf:/etc/asterisk/extensions.conf
+
+# Define Elasticsearch service
 #  elastic:
 #    depends_on:
 #      - "homer"
