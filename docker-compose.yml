@@ -99,6 +99,7 @@ services:
 #      - ./data/asterisk/hep.conf:/etc/asterisk/hep.conf
 #      - ./data/asterisk/asterisk1.rtp.conf:/etc/asterisk/rtp.conf
 #      - ./data/asterisk/extensions.conf:/etc/asterisk/extensions.conf
+#      - ./data/asterisk/manager.conf:/etc/asterisk/manager.conf
 
 # Define Elasticsearch service
 #  elastic:
