@@ -204,6 +204,13 @@ if [ -n "$DO_GRAYLOG" ]; then
 fi
 
 ##################
+## MYSQL OPTIONS
+if [ -n "$DO_MYSQL_STATS" ]; then
+	sed -i '/^#.*define.*DO_MYSQL_STATS/s/^#//' /etc/kamailio/kamailio.cfg
+fi
+
+
+##################
 ## METRICS OPTIONS
 if [ -n "$DO_KPI" ]; then
 	sed -i '/^#.*define.*DO_KPI/s/^#//' /etc/kamailio/kamailio.cfg

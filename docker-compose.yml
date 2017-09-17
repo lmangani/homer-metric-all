@@ -5,6 +5,7 @@ services:
   homer:
     image: qxip/homer-metric-all:latest
     environment:
+      DO_MYSQL_STATS: 1
       INFLUXDB_URL: influxdb:8086
       DO_INFLUXDB: 1
       DO_KPI: 1

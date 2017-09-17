@@ -53,7 +53,8 @@ RUN apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 0xfb40d3e6508ea4c8 
     echo "deb-src http://deb.kamailio.org/kamailio50 jessie main" >> etc/apt/sources.list && \
     apt-get update -qq && apt-get install -f -yqq kamailio rsyslog kamailio-outbound-modules kamailio-geoip-modules kamailio-sctp-modules kamailio-tls-modules kamailio-websocket-modules kamailio-utils-modules kamailio-mysql-modules kamailio-extra-modules && rm -rf /var/lib/apt/lists/*
 
-RUN cd /tmp && git init tmpgit \
+RUN cd /tmp \
+  && git init tmpgit \
   && cd tmpgit \
   && git remote add -f origin https://github.com/sipcapture/homer-config \
   && git config core.sparseCheckout true \
