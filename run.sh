@@ -187,7 +187,7 @@ if [ -n "$DO_INFLUXDB" ]; then
 	sed -i '/^#.*define.*DO_INFLUXDB/s/^#//' /etc/kamailio/kamailio.cfg
 fi
 if [ -n "$INFLUXDB_URL" ]; then
-	sed -i -e "s/127.0.0.1:8086/${INFLUX_URL}/g" /etc/kamailio/kamailio.cfg
+	sed -i -e "s/127.0.0.1:8086/${INFLUXDB_URL:-influxdb}/g" /etc/kamailio/kamailio.cfg
 fi
 ##################
 ## ELASTICSEARCH OPTIONS
@@ -195,7 +195,7 @@ if [ -n "$DO_ELASTICSEARCH" ]; then
 	sed -i '/^#.*define.*DO_ELASTICSEARCH/s/^#//' /etc/kamailio/kamailio.cfg
 fi
 if [ -n "$ELASTICSEARCH_URL" ]; then
-	sed -i -e "s/127.0.0.1:9200/${ELASTICSEARCH_URL}/g" /etc/kamailio/kamailio.cfg
+	sed -i -e "s/127.0.0.1:9200/${ELASTICSEARCH_URL:-elasticsearch}/g" /etc/kamailio/kamailio.cfg
 fi
 ##################
 ## GRAYLOG OPTIONS
