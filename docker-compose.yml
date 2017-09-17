@@ -90,8 +90,6 @@ services:
 # Define Asterisk service
 #  asterisk:
 #    image: dougbtv/asterisk14
-#    environment:
-#      KAPACITOR_URL: http://kapacitor:9092
 #    ports:
 #      - "5060:5060/udp"
 #      - "10001-10002:10001-10002/udp"
