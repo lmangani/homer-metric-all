@@ -1,6 +1,6 @@
 FROM debian:jessie
 MAINTAINER L. Mangani <lorenzo.mangani@gmail.com>
-# v.5.02
+# v.5.03
 
 # Default baseimage settings
 ENV HOME /root
@@ -34,8 +34,8 @@ RUN sed -Ei 's/^(bind-address|log)/#&/' /etc/mysql/my.cnf \
 WORKDIR /
 
 # HOMER 5
-RUN git clone --depth 1 https://github.com/sipcapture/homer-api.git /homer-api && \
-    git clone --depth 1 https://github.com/sipcapture/homer-ui.git /homer-ui
+RUN git clone --depth 1 https://github.com/sipcapture/homer-ui.git /homer-ui
+RUN git clone --depth 1 https://github.com/sipcapture/homer-api.git /homer-api
 
 RUN chmod -R +x /homer-api/scripts/mysql/* && \
     cp -R /homer-api/scripts/mysql/. /opt/ && \
