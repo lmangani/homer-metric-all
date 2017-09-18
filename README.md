@@ -13,7 +13,7 @@ docker-compose up -d
 ![ezgif com-crop](https://user-images.githubusercontent.com/1423657/30537079-a2545750-9c68-11e7-997e-57151ee046b6.gif)
 
 ### ELK Stack
-![ezgif com-optimize 25](https://user-images.githubusercontent.com/1423657/30553272-0ab7d4f6-9ca1-11e7-848f-5ac97308b1f7.gif)
+![ezgif com-optimize 26](https://user-images.githubusercontent.com/1423657/30553362-4fbc3a2e-9ca1-11e7-9a8d-a7b505bc8e6b.gif)
 
 #### Available Backends
 ```
